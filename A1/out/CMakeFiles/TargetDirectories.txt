@@ -1,3 +1,0 @@
-/home/mendess/Projects/GraphicsComputing/A1/out/CMakeFiles/rebuild_cache.dir
-/home/mendess/Projects/GraphicsComputing/A1/out/CMakeFiles/class1.dir
-/home/mendess/Projects/GraphicsComputing/A1/out/CMakeFiles/edit_cache.dir
