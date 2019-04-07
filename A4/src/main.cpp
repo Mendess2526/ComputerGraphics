@@ -313,7 +313,7 @@ void processKeys(unsigned char key, int xx, int yy)
         SLICES -= 1;
         break;
     case 'T':
-        SLICES = 20000;
+        SLICES += 20000;
         break;
     case 't':
         SLICES = 10;
@@ -399,7 +399,6 @@ int main(int argc, char** argv)
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
     glEnableClientState(GL_VERTEX_ARRAY);
-    glPolygonMode(GL_FRONT, GL_LINE);
 
     spherical2Cartesian();
 
