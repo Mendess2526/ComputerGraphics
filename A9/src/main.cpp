@@ -180,11 +180,21 @@ void prepareCilinder(float height, float radius, int sides)
 
 void drawCilinder()
 {
-
     float c[] = { .6, .6, .6, 1 };
-    glMaterialfv(GL_FRONT, GL_EMISSION, c);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, c);
+
+    /* float specular_arr[] = { 0, 0, 0, 1 }; */
+    /* glMaterialfv(GL_FRONT, GL_SPECULAR, specular_arr); */
+
+    /* float emissive_arr[] = { 0, 0, 0, 1 }; */
+    /* glMaterialfv(GL_FRONT, GL_EMISSION, emissive_arr); */
+
+    /* float ambient_arr[] = { 0.2, 0.2, 0.2, 1 }; */
+    /* glMaterialfv(GL_FRONT, GL_AMBIENT, ambient_arr); */
+
     glBindBuffer(GL_ARRAY_BUFFER, vertices[0]);
     glVertexPointer(3, GL_FLOAT, 0, 0);
+
     glBindBuffer(GL_ARRAY_BUFFER, vertices[1]);
     glNormalPointer(GL_FLOAT, 0, 0);
 
@@ -207,15 +217,26 @@ void renderScene(void)
         0.0, 0.0, 0.0,
         0.0f, 1.0f, 0.0f);
 
-    GLfloat amb[4] = { 0.2, 0.2, 0.2, 1.0 };
+    GLfloat amb[4] = { 0, 0, 0, 1 };
     GLfloat diff[4] = { 1.0, 1.0, 1.0, 1.0 };
     glLightfv(GL_LIGHT0, GL_AMBIENT, amb);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, diff);
 
-    GLfloat dir[4] = {0.0, 1.0 ,1.0, 0.0};
+    GLfloat dir[4] = { 0.0, 1.0, 1.0, 0.0 };
     glLightfv(GL_LIGHT0, GL_POSITION, dir);
 
     drawCilinder();
+    glPushMatrix();
+    glTranslatef(0, 0, -20);
+    drawCilinder();
+    glPopMatrix();
+
+    /* glTranslatef(0, 0, -10); */
+    /* float em[] = {1, 1, 1, 1}; */
+    /* glMaterialfv(GL_FRONT, GL_EMISSION, em); */
+    /* glutSolidSphere(0.1, 10, 10); */
+    /* float em_reset[] = {0, 0, 0, 1}; */
+    /* glMaterialfv(GL_FRONT, GL_EMISSION, em_reset); */
 
     frame++;
     time = glutGet(GLUT_ELAPSED_TIME);
